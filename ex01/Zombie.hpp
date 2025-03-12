@@ -6,6 +6,10 @@
 #include <cctype>
 #include <limits.h>
 
+#define RED \033[31m
+#define GREEN \033[32m
+#define WHITE \033[0m
+
 class Zombie
 {
 	private:
@@ -19,5 +23,6 @@ class Zombie
 	
 void	randomChump( std::string name );
 Zombie*	newZombie( std::string name );
+Zombie*	zombieHorde( int N, std::string name );
 
 #endif
