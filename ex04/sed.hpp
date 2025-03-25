@@ -26,7 +26,7 @@ class Sed
 		void	SetInfos(int argc, char** argv);
 		void	FillFile(void);
 		std::string	getFileName(void);
-		Sed(int argc, char **argv);
+		Sed(void);
 		~Sed(void);
 };
 

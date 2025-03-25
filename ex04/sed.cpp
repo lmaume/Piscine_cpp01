@@ -1,11 +1,6 @@
 #include "sed.hpp"
 
-Sed::Sed(int argc, char **argv)
-{
-	this->SetInfos(argc, argv);
-	this->openFile();
-	this->FillFile();
-}
+Sed::Sed(){}
 Sed::~Sed(void){}
 
 void	Sed::SetInfos(int argc, char **argv)
@@ -38,7 +33,6 @@ void	Sed::openFile(void)
 void	Sed::FillFile(void)
 {
 	std::string	String;
-	std::string	StringCopy;
 
 	if (_s1 == _s2)
 		while (std::getline(_file, String))
