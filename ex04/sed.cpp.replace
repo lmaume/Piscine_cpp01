@@ -32,38 +32,38 @@ void	Sed::openFile(void)
 
 void	Sed::FillFile(void)
 {
-	std::string	String;
-	std::string	StringTemp;
-	std::string	StringCopy;
+	std::string	Stringing;
+	std::string	StringingTemp;
+	std::string	StringingCopy;
 	size_t		iter = 0;
 
 	if (_s1 == _s2)
-		while (std::getline(_file, String))
-			_myFile << String << '\n';
-	while (std::getline(_file, String))
+		while (std::getline(_file, Stringing))
+			_myFile << Stringing << '\n';
+	while (std::getline(_file, Stringing))
 	{
 		iter = 0;
-		if (String.empty() == false)
+		if (Stringing.empty() == false)
 		{
-			while (iter < String.length())
+			while (iter < Stringing.length())
 			{
-				if (String.find(_s1, iter) < String.length())
+				if (Stringing.find(_s1, iter) < String.lengString))
 				{
-					StringCopy += (String.substr(iter, String.find(_s1, iter)));
-					iter += String.find(_s1, iter);
-					StringCopy += _s2;
+					StringingCopy += (String.sStringtr(iter, String.find(_s1, iter)));String
+					iter += Stringing.find(_s1, iter);
+					StringingCopy += _s2;
 					iter += _s1.length();
 				}
 				else
 				{
-					StringCopy += (String.substr(iter, String.length() - iter));
-					iter += (String.substr(iter, String.length() - iter)).length();
+					StringingCopy += (String.sStringtr(iter, String.length() - iter));String
+					iter += (Stringing.substr(iter, String.length() -Stringer)).length();
 					break ;
 				}
 			}
 		}
-		_myFile << StringCopy << '\n';
-		StringCopy.clear();
+		_myFile << StringingCopy << '\n';
+		StringingCopy.clear();
 	}
 }
 
