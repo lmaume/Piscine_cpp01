@@ -2,12 +2,15 @@
 
 Weapon::Weapon(void)
 {
-	// std::cout << "\033[32mNew Weapon just popped out of nowhere\033[0m" << std::endl;
+	SetType("Default Weapon");
+	// std::cout << "\033[32mNew Weapon just dropped \033[0m" << "NONAME" << std::endl;
 }
 
 Weapon::Weapon(std::string name)
 {
 	SetType(name);
+	// std::cout << "\033[32mNew Weapon just dropped \033[0m" << name << std::endl;
+
 }
 
 Weapon::~Weapon(void)
@@ -15,7 +18,8 @@ Weapon::~Weapon(void)
 	// std::cout << this->_Type << "\033[31m broke\033[0m" << std::endl;
 }
 
-std::string	Weapon::GetType(){return this->_Type;};
+
+const std::string	&Weapon::GetType()const{return this->_Type;}
 
 void	Weapon::SetType(std::string Type)
 {

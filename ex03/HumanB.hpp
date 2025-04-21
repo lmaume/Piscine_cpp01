@@ -7,6 +7,10 @@
 #include <limits.h>
 #include "Weapon.hpp"
 
+#define RED \033[32m
+#define GREEN \033[32m
+#define WHITE \033[0m
+
 class HumanB
 {
 	private:
@@ -15,7 +19,8 @@ class HumanB
 	public:
 		void	Attack();
 		void	SetName(std::string name);
-		void	SetWeapon(Weapon Weapon);
+		void	SetWeapon(Weapon &Weapon);
+		std::string	GetName();
 		HumanB(std::string name);
 		~HumanB(void);
 };

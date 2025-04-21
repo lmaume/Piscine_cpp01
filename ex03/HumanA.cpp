@@ -1,10 +1,10 @@
 #include "HumanA.hpp"
 #include "Weapon.hpp"
 
-HumanA::HumanA(std::string name, Weapon Weapon)
+HumanA::HumanA(std::string name, Weapon &weapon) : _Weapon(weapon)
 {
 	SetName(name);
-	SetWeapon(Weapon);
+	SetWeapon(weapon);
 }
 
 HumanA::~HumanA(void)
@@ -12,9 +12,11 @@ HumanA::~HumanA(void)
 	std::cout << this->_Name << "\033[31m ended sad and alone\033[0m" << std::endl;
 }
 
+std::string	HumanA::GetName(){return (this->_Name);}
+
 void	HumanA::Attack()
 {
-	std::cout << _Name << " attacks with their " << this->_Weapon->GetType() << std::endl;
+	std::cout << _Name << " attacks with their " << _Weapon.GetType() << std::endl;
 }
 
 void HumanA::SetName(std::string name)
@@ -25,7 +27,7 @@ void HumanA::SetName(std::string name)
 		this->_Name = "John Doe";
 }
 
-void	HumanA::SetWeapon(Weapon Weapon)
+void	HumanA::SetWeapon(Weapon &Weapon)
 {
-	this->_Weapon = &Weapon;
+	_Weapon = Weapon;
 }
