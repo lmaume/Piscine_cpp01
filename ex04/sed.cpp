@@ -38,11 +38,19 @@ void	Sed::FillFile(void)
 	size_t		iter = 0;
 
 	if (_s1 == _s2)
+	{
 		while (std::getline(_file, String))
 			_myFile << String << '\n';
-	while (std::getline(_file, String))
+		return;		
+	}
+	while (std::getline(_file, StringTemp))
 	{
-		iter = 0;
+		String += StringTemp;
+		String += '\n';
+	}
+	String.erase(String.size() - 1);
+	while (iter < String.length())
+	{
 		if (String.empty() == false)
 		{
 			while (iter < String.length())
@@ -62,7 +70,7 @@ void	Sed::FillFile(void)
 				}
 			}
 		}
-		_myFile << StringCopy << '\n';
+		_myFile << StringCopy;
 		StringCopy.clear();
 	}
 }
