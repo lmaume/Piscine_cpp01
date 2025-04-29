@@ -32,52 +32,21 @@ void	Sed::openFile(void)
 
 void	Sed::FillFile(void)
 {
-	std::string	String;
-	std::string	StringTemp;
-	std::string	StringCopy;
-	size_t		iter = 0;
+	std::string	line;
+	size_t			iter = 0;
 
-	if (_s1 == _s2)
+	if (_s1.empty() == true)
+		return ;
+	std::getline(_file, line, '\0');
+	while ((iter = line.find(_s1, iter)) != std::string::npos)
 	{
-		while (std::getline(_file, String))
-			_myFile << String << '\n';
-		return;		
+		line.erase(iter, _s1.length());
+		line.insert(iter, _s2);
+		iter += _s2.length();
+		std::cout << iter << '\n';
 	}
-	while (std::getline(_file, StringTemp))
-	{
-		String += StringTemp;
-		String += '\n';
-	}
-	String.erase(String.size() - 1);
-	while (iter < String.length())
-	{
-		if (String.empty() == false)
-		{
-			while (iter < String.length())
-			{
-				if (String.find(_s1, iter) < String.length())
-				{
-					StringCopy += (String.substr(iter, String.find(_s1, iter)));
-					iter += String.find(_s1, iter);
-					StringCopy += _s2;
-					iter += _s1.length();
-				}
-				else
-				{
-					StringCopy += (String.substr(iter, String.length() - iter));
-					iter += (String.substr(iter, String.length() - iter)).length();
-					break ;
-				}
-			}
-		}
-		_myFile << StringCopy;
-		StringCopy.clear();
-	}
+	_myFile << line;
 }
 
 std::string Sed::getFileName()
 {return (this->_fileName);}
-
-
-// ecrire un char dans copy. iter sur string
-// quand je trouve s1 j;ecros s2 dans copy et j'avance de la len de s1 dans string,
